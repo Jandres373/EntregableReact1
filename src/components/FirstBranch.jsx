@@ -1,9 +1,10 @@
 import { Image } from "@chakra-ui/react";
+import firstBranche from "../assets/ramitasin_hojas-removebg-preview.png"
 
 const FirstBranch = () => {
   return (
     <Image
-  src="../src/assets/ramitasin_hojas-removebg-preview.png"
+  src={firstBranche}
   position="absolute"
   top="0"
   right="-30px"
