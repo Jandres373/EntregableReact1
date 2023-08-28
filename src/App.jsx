@@ -1,3 +1,4 @@
+// organizamos las importaciones necesarias 
 import { useState } from "react";
 import phrases from "./utils/quothes.json";
 import {
@@ -6,7 +7,7 @@ import {
   randomizeRGB,
   determineContrast,
 } from "./utils/functions";
-import { Box, Button, Heading, Image, useMediaQuery } from "@chakra-ui/react";
+import { Box, useMediaQuery } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import ImageContainer from "./components/ImageContainer";
 import useSound from "use-sound";
@@ -14,10 +15,11 @@ import breakingCookie from "./assets/ntwr6-tn03t.mp3";
 import FirstBranch from "./components/FirstBranch";
 import SecondBranch from "./components/SecondBranch";
 import Hojita from "./components/Hojita";
-
+// creamos las variables y constantes que no queremos que sean releidas en cada ejecucion de la funcion App
 const arrFromRandomIndex = [];
-
+//Creamos el componente App
 const App = () => {
+//Definimos los estados que usaremos y que necesitaremos pasar a los hijos del componente
   const [isLargeScreen] = useMediaQuery("(min-width: 800px)")
   const [play] = useSound(breakingCookie, { duration: 1 });
   const [thicker, setThicker] = useState(0);
@@ -33,7 +35,7 @@ const App = () => {
     contrastColor2: "#8866aa",
   });
   const [displayedMessage, setDisplayedMessage] = useState([""]);
-
+// creamos las funciones que dependen del estado o que no se importarán desde functions.js
   const unRepeatedIndex = () => {
     const randomIndex = randomizeNum(phrases);
     if (arrFromRandomIndex.length < phrases.length) {
@@ -115,6 +117,7 @@ const App = () => {
         position="relative"
         
       >
+       {/*  // aquí se despliega el componente que renderiza las imagenes de fondo de las galletas de la fortuna, y se pasan como props todos los elementos del estado que dicho componente necesitará. */}
         <ImageContainer
           handleOnClick={handleOnClick}
           phrases={phrases}
@@ -127,9 +130,9 @@ const App = () => {
           setClicks={setClicks}
           setDisplayedMessage={setDisplayedMessage}
         />
-
-      {isLargeScreen ? <FirstBranch /> : null}
-      {isLargeScreen ? <SecondBranch /> : null}
+  {/* /aquí se despliegan otros dos componentes de manera condicional, para ello usamos el hook de la libreria chakra Ui que determina el width del viewport para renderizar X o Y con un operador ternario. */}
+      {isLargeScreen && <FirstBranch /> }
+      {isLargeScreen && <SecondBranch /> }
 
       
 
