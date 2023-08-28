@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Image } from '@chakra-ui/react';
 import { useInterval } from '../utils/functions';
-
+import hojita1 from "../assets/hojita6-removebg-preview.png"
+import hojita2 from "../assets/hojita5-removebg-preview.png"
 const Hojita = ({ top = 0, bottom = 0, left = 0, right = 0, rotation = 0, index }) => {
   const [interval, setInterval] = useState(0);
   const [movement, setMovement] = useState(0);
@@ -26,7 +27,7 @@ const Hojita = ({ top = 0, bottom = 0, left = 0, right = 0, rotation = 0, index 
   return (
     <Image
       as={motion.img}
-      src={index % 2 === 0 ? "../src/assets/hojita6-removebg-preview.png" : "../src/assets/hojita5-removebg-preview.png"}
+      src={index % 2 === 0 ? hojita1 : hojita2 }
       position="absolute"
       top={top}
       bottom={bottom}
